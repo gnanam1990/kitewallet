@@ -46,7 +46,9 @@ interface TransferEvent {
 }
 
 interface GetTransfersResponse {
-  transferEvents: TransferEvent[];
+  transferEvents: {
+    items: TransferEvent[];
+  };
 }
 
 export async function getRecentTransfers(address: string) {
@@ -54,44 +56,26 @@ export async function getRecentTransfers(address: string) {
   const data = await gqlQuery<GetTransfersResponse>(
     `query GetTransfers($addr: String!) {
       transferEvents(
-        where: { from: $addr }
-        orderBy: blockNumber
-        orderDirection: desc
-        first: 20
+        where: { OR: [{ from: $addr }, { to: $addr }] }
+        orderBy: "blockNumber"
+        orderDirection: "desc"
+        limit: 20
       ) {
-        from
-        to
-        value
-        blockNumber
-        transactionHash
-        timestamp
+        items {
+          from
+          to
+          value
+          blockNumber
+          transactionHash
+          timestamp
+        }
       }
     }`,
     { addr }
   );
 
-  const data2 = await gqlQuery<GetTransfersResponse>(
-    `query GetTransfersTo($addr: String!) {
-      transferEvents(
-        where: { to: $addr }
-        orderBy: blockNumber
-        orderDirection: desc
-        first: 20
-      ) {
-        from
-        to
-        value
-        blockNumber
-        transactionHash
-        timestamp
-      }
-    }`,
-    { addr }
-  );
-
-  const all = [...data.transferEvents, ...data2.transferEvents];
   const unique = new Map<string, TransferEvent>();
-  for (const t of all) {
+  for (const t of data.transferEvents.items) {
     unique.set(`${t.transactionHash}-${t.from}-${t.to}-${t.value}`, t);
   }
   return Array.from(unique.values())
@@ -110,7 +94,9 @@ interface BridgeTransfer {
 }
 
 interface GetBridgeResponse {
-  bridgeTransfers: BridgeTransfer[];
+  bridgeTransfers: {
+    items: BridgeTransfer[];
+  };
 }
 
 export async function getBridgeHistory(address: string) {
@@ -119,46 +105,27 @@ export async function getBridgeHistory(address: string) {
   const data = await gqlQuery<GetBridgeResponse>(
     `query GetBridges($addr: String!) {
       bridgeTransfers(
-        where: { sender: $addr }
-        orderBy: blockNumber
-        orderDirection: desc
-        first: 20
+        where: { OR: [{ sender: $addr }, { recipient: $addr }] }
+        orderBy: "blockNumber"
+        orderDirection: "desc"
+        limit: 20
       ) {
-        transferId
-        direction
-        sender
-        recipient
-        amount
-        status
-        blockNumber
+        items {
+          transferId
+          direction
+          sender
+          recipient
+          amount
+          status
+          blockNumber
+        }
       }
     }`,
     { addr }
   );
 
-  const data2 = await gqlQuery<GetBridgeResponse>(
-    `query GetBridgesRecipient($addr: String!) {
-      bridgeTransfers(
-        where: { recipient: $addr }
-        orderBy: blockNumber
-        orderDirection: desc
-        first: 20
-      ) {
-        transferId
-        direction
-        sender
-        recipient
-        amount
-        status
-        blockNumber
-      }
-    }`,
-    { addr }
-  );
-
-  const all = [...data.bridgeTransfers, ...data2.bridgeTransfers];
   const unique = new Map<string, BridgeTransfer>();
-  for (const b of all) {
+  for (const b of data.bridgeTransfers.items) {
     unique.set(b.transferId, b);
   }
   return Array.from(unique.values()).sort(
@@ -183,8 +150,12 @@ interface DelegatorRegistration {
 }
 
 interface GetStakingResponse {
-  validatorRegistrations: ValidatorRegistration[];
-  delegatorRegistrations: DelegatorRegistration[];
+  validatorRegistrations: {
+    items: ValidatorRegistration[];
+  };
+  delegatorRegistrations: {
+    items: DelegatorRegistration[];
+  };
 }
 
 export async function getStakingPositions(address: string) {
@@ -192,29 +163,33 @@ export async function getStakingPositions(address: string) {
 
   const data = await gqlQuery<GetStakingResponse>(
     `query GetStaking($addr: String!) {
-      validatorRegistrations(where: { owner: $addr }, first: 1) {
-        validatorId
-        owner
-        stake
-        delegationFeeBips
-        minStakeDuration
-        blockNumber
+      validatorRegistrations(where: { owner: $addr }, limit: 1) {
+        items {
+          validatorId
+          owner
+          stake
+          delegationFeeBips
+          minStakeDuration
+          blockNumber
+        }
       }
       delegatorRegistrations(
         where: { delegatorAddress: $addr }
-        first: 50
+        limit: 50
       ) {
-        validatorId
-        delegatorAddress
-        stake
-        blockNumber
+        items {
+          validatorId
+          delegatorAddress
+          stake
+          blockNumber
+        }
       }
     }`,
     { addr }
   );
 
   return {
-    asValidator: data.validatorRegistrations[0] ?? null,
-    asDelegator: data.delegatorRegistrations,
+    asValidator: data.validatorRegistrations.items[0] ?? null,
+    asDelegator: data.delegatorRegistrations.items,
   };
 }
