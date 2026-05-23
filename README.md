@@ -4,6 +4,13 @@ Open-source wallet viewer for Kite Mainnet. Paste any address, see balances, tra
 
 Powered by [KiteIndex](https://github.com/gnanam1990/kiteindex) — same author, same week.
 
+## Deployment
+
+- **Production:** https://kitewallet.vercel.app
+- **Host:** Vercel (`kitewallet`)
+- **Status:** production build verified; address balance lookup uses public RPC, transfer/bridge/staking history requires a public KiteIndex GraphQL endpoint via `NEXT_PUBLIC_KITEINDEX_URL`
+- **Last verified:** 2026-05-23
+
 ## Try it locally
 
 Requires KiteIndex running locally at http://localhost:42069.
@@ -33,7 +40,7 @@ Open http://localhost:3000. Try one of the suggested addresses on the landing pa
 
 ## Status
 
-v0.1. Local-only by design — deploys when there's demand.
+v0.1. Public read-only deployment is live. Full transfer, bridge, and staking history depends on KiteIndex availability.
 
 Built with [openclaude](https://github.com/openclaude/openlawb), [@kevincodex](https://twitter.com/kevincodex), [@gitlawb](https://twitter.com/gitlawb).
 
