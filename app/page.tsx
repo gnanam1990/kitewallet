@@ -1,5 +1,6 @@
 import { AddressSearch } from "@/components/address-search";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import Link from "next/link";
 
 const SUGGESTED_ADDRESSES = [
@@ -29,6 +30,14 @@ export default async function LandingPage({ searchParams }: LandingPageProps) {
     <div className="kite-gradient flex flex-1 flex-col items-center justify-center px-4">
       <main className="flex w-full max-w-3xl flex-col items-center gap-8 py-16">
         <div className="space-y-3 text-center">
+          <Image
+            src="/kite-logo-mark-black.png"
+            alt="Kite"
+            width={52}
+            height={52}
+            priority
+            className="mx-auto h-13 w-13 object-contain"
+          />
           <p className="text-xs font-semibold uppercase text-muted-foreground">
             Kite Mainnet wallet viewer
           </p>
