@@ -49,72 +49,72 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --background: #FEF8F0;
+  --foreground: #1F1A14;
+  --card: #FAF2E6;
+  --card-foreground: #1F1A14;
+  --popover: #FAF2E6;
+  --popover-foreground: #1F1A14;
+  --primary: #1F1A14;
+  --primary-foreground: #FEF8F0;
+  --secondary: #F1EBE0;
+  --secondary-foreground: #1F1A14;
+  --muted: #F1EBE0;
+  --muted-foreground: #6E604E;
+  --accent: #E3D7C2;
+  --accent-foreground: #1F1A14;
+  --destructive: #A23A1A;
+  --border: #E3D7C2;
+  --input: #D8C9B2;
+  --ring: #9B8564;
+  --chart-1: #9B8564;
+  --chart-2: #485C11;
+  --chart-3: #B29D7D;
+  --chart-4: #6E604E;
+  --chart-5: #2A241B;
+  --radius: 0.5rem;
+  --sidebar: #FAF2E6;
+  --sidebar-foreground: #1F1A14;
+  --sidebar-primary: #1F1A14;
+  --sidebar-primary-foreground: #FEF8F0;
+  --sidebar-accent: #F1EBE0;
+  --sidebar-accent-foreground: #1F1A14;
+  --sidebar-border: #E3D7C2;
+  --sidebar-ring: #9B8564;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #1F1A14;
+  --foreground: #FEF8F0;
+  --card: #28211A;
+  --card-foreground: #FEF8F0;
+  --popover: #28211A;
+  --popover-foreground: #FEF8F0;
+  --primary: #FEF8F0;
+  --primary-foreground: #1F1A14;
+  --secondary: #2E271F;
+  --secondary-foreground: #FEF8F0;
+  --muted: #2E271F;
+  --muted-foreground: #B29D7D;
+  --accent: #3D352A;
+  --accent-foreground: #FEF8F0;
+  --destructive: #C44C27;
+  --border: #3D352A;
+  --input: #3D352A;
+  --ring: #B29D7D;
+  --chart-1: #B29D7D;
+  --chart-2: #627A1A;
+  --chart-3: #9B8564;
+  --chart-4: #E3D7C2;
+  --chart-5: #FEF8F0;
+  --sidebar: #28211A;
+  --sidebar-foreground: #FEF8F0;
+  --sidebar-primary: #FEF8F0;
+  --sidebar-primary-foreground: #1F1A14;
+  --sidebar-accent: #2E271F;
+  --sidebar-accent-foreground: #FEF8F0;
+  --sidebar-border: #3D352A;
+  --sidebar-ring: #B29D7D;
 }
 
 @layer base {
@@ -123,8 +123,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
   }
   html {
     @apply font-sans;
   }
+}
+
+.kite-gradient {
+  background: linear-gradient(135deg, #FEF8F0 0%, #F1EBE0 50%, #E3D7C2 100%);
 }

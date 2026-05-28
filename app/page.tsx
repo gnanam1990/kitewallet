@@ -1,5 +1,4 @@
 import { AddressSearch } from "@/components/address-search";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
@@ -27,32 +26,32 @@ export default async function LandingPage({ searchParams }: LandingPageProps) {
   const error = params.error === "invalid_address" ? "Invalid address format" : null;
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center px-4">
-      <main className="flex flex-col items-center gap-8 max-w-2xl w-full py-16">
-        {/* Hero */}
-        <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold">KiteWallet</h1>
-          <p className="text-muted-foreground text-lg">
+    <div className="kite-gradient flex flex-1 flex-col items-center justify-center px-4">
+      <main className="flex w-full max-w-3xl flex-col items-center gap-8 py-16">
+        <div className="space-y-3 text-center">
+          <p className="text-xs font-semibold uppercase text-muted-foreground">
+            Kite Mainnet wallet viewer
+          </p>
+          <h1 className="text-4xl font-bold sm:text-5xl">KiteWallet</h1>
+          <p className="mx-auto max-w-xl text-lg text-muted-foreground">
             Open-source wallet viewer for Kite Mainnet
           </p>
         </div>
 
-        {/* Search */}
-        <div className="w-full max-w-lg">
+        <div className="w-full max-w-xl rounded-lg border border-border bg-card/80 p-3 shadow-sm backdrop-blur">
           <AddressSearch size="lg" initialError={error} />
         </div>
 
-        {/* Suggested addresses */}
-        <div className="space-y-3 w-full max-w-lg">
-          <p className="text-sm text-muted-foreground text-center">
+        <div className="w-full max-w-xl space-y-3">
+          <p className="text-center text-sm text-muted-foreground">
             Try a suggested address:
           </p>
           <div className="grid gap-2">
             {SUGGESTED_ADDRESSES.map((s) => (
               <Link key={s.address} href={`/${s.address.toLowerCase()}`}>
-                <Card className="hover:bg-accent transition-colors cursor-pointer">
+                <Card className="cursor-pointer border-border/80 bg-card/85 shadow-sm transition-colors hover:bg-accent">
                   <CardContent className="py-3 px-4">
-                    <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center justify-between gap-4 text-left">
                       <span className="text-sm font-medium">{s.label}</span>
                       <span className="font-mono text-xs text-muted-foreground truncate">
                         {s.address.slice(0, 10)}...{s.address.slice(-8)}
@@ -65,8 +64,7 @@ export default async function LandingPage({ searchParams }: LandingPageProps) {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="text-center text-xs text-muted-foreground pt-8">
+        <footer className="pt-8 text-center text-xs text-muted-foreground">
           Powered by{" "}
           <a
             href="https://github.com/gnanam1990/kiteindex"
